@@ -67,3 +67,19 @@ def afundados(frota,tabuleiro):
             if afundou == True:
                 qnt += 1
     return qnt
+
+def posicao_valida(frota, linha, coluna, orientacao, tamanho):
+    posicoes = define_posicoes(linha,coluna,orientacao,tamanho)
+    for posicao in posicoes:
+        if posicao[0] < 0 or posicao[0]>=10:
+            return False
+        if posicao[1] < 0 or posicao[1]>=10:
+            return False
+    for nome, navios in frota.items():
+        for cordenadas in navios:
+            i = 0
+            while i <len(cordenadas):
+                if cordenadas[i] in posicoes:
+                    return False
+                i += 1
+    return True
