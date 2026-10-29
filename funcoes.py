@@ -51,5 +51,19 @@ def posiciona_frota(frota):
                 l = l+1
     return tabuleiro
 
+def afundados(frota,tabuleiro):
+    qnt =  0 
 
-
+    for nome, navios in frota.items():
+        for cordenadas in navios:
+            i = 0
+            afundou = True
+            while i < len (cordenadas):
+                linha = cordenadas[i][0]
+                coluna = cordenadas[i][1]
+                if tabuleiro[linha][coluna] != 'X':
+                    afundou = False
+                i+=1
+            if afundou == True:
+                qnt += 1
+    return qnt
